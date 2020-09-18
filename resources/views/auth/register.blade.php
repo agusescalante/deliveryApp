@@ -14,11 +14,14 @@
                 <x-jet-input class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
+<<<<<<< HEAD
             <div>
                 <x-jet-label value="{{ __('Last Name') }}" />
                 <x-jet-input class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             </div>
 
+=======
+>>>>>>> Closes #4 - Creo proyecto Laravel v8
             <div class="mt-4">
                 <x-jet-label value="{{ __('Email') }}" />
                 <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
