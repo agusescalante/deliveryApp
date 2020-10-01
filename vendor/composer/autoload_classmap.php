@@ -2192,6 +2192,7 @@ return array(
     'Jenssegers\\Agent\\AgentServiceProvider' => $vendorDir . '/jenssegers/agent/src/AgentServiceProvider.php',
     'Jenssegers\\Agent\\Facades\\Agent' => $vendorDir . '/jenssegers/agent/src/Facades/Agent.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+<<<<<<< HEAD
     'Laravel\\Dusk\\Browser' => $vendorDir . '/laravel/dusk/src/Browser.php',
     'Laravel\\Dusk\\Chrome\\ChromeProcess' => $vendorDir . '/laravel/dusk/src/Chrome/ChromeProcess.php',
     'Laravel\\Dusk\\Chrome\\SupportsChrome' => $vendorDir . '/laravel/dusk/src/Chrome/SupportsChrome.php',
@@ -2219,6 +2220,8 @@ return array(
     'Laravel\\Dusk\\OperatingSystem' => $vendorDir . '/laravel/dusk/src/OperatingSystem.php',
     'Laravel\\Dusk\\Page' => $vendorDir . '/laravel/dusk/src/Page.php',
     'Laravel\\Dusk\\TestCase' => $vendorDir . '/laravel/dusk/src/TestCase.php',
+=======
+>>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
     'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => $vendorDir . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
     'Laravel\\Fortify\\Actions\\CompletePasswordReset' => $vendorDir . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
     'Laravel\\Fortify\\Actions\\ConfirmPassword' => $vendorDir . '/laravel/fortify/src/Actions/ConfirmPassword.php',

@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "0ce8c3129d3383e510106e9db47abe8b",
+=======
+    "content-hash": "52849ff5215c08dc85cb1ae9bb5692f1",
+>>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2087,6 +2091,68 @@
                 "serialize"
             ],
             "time": "2020-09-06T17:02:15+00:00"
+        },
+        {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
+                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7",
+                "vimeo/psalm": "^1|^2|^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "time": "2019-11-06T19:20:29+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -6050,6 +6116,7 @@
             ],
             "description": "Library for handling version information and constraints",
             "time": "2020-06-27T14:39:04+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "php-webdriver/webdriver",
@@ -6115,6 +6182,8 @@
                 "webdriver"
             ],
             "time": "2020-03-04T14:40:12+00:00"
+=======
+>>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
         },
         {
             "name": "phpdocumentor/reflection-common",
