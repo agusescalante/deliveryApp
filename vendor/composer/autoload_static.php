@@ -34,10 +34,6 @@ class ComposerStaticInitdd5cd8ef540484d3010fa200da0c0f01
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-<<<<<<< HEAD
-        '2a3c2110e8e0295330dc3d11a4cbc4cb' => __DIR__ . '/..' . '/php-webdriver/webdriver/lib/Exception/TimeoutException.php',
-=======
->>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
@@ -137,10 +133,6 @@ class ComposerStaticInitdd5cd8ef540484d3010fa200da0c0f01
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Jetstream\\' => 18,
             'Laravel\\Fortify\\' => 16,
-<<<<<<< HEAD
-            'Laravel\\Dusk\\' => 13,
-=======
->>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
         ),
         'J' => 
         array (
@@ -436,13 +428,6 @@ class ComposerStaticInitdd5cd8ef540484d3010fa200da0c0f01
         array (
             0 => __DIR__ . '/..' . '/laravel/fortify/src',
         ),
-<<<<<<< HEAD
-        'Laravel\\Dusk\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laravel/dusk/src',
-        ),
-=======
->>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
         'Jenssegers\\Agent\\' => 
         array (
             0 => __DIR__ . '/..' . '/jenssegers/agent/src',
@@ -2781,36 +2766,6 @@ class ComposerStaticInitdd5cd8ef540484d3010fa200da0c0f01
         'Jenssegers\\Agent\\AgentServiceProvider' => __DIR__ . '/..' . '/jenssegers/agent/src/AgentServiceProvider.php',
         'Jenssegers\\Agent\\Facades\\Agent' => __DIR__ . '/..' . '/jenssegers/agent/src/Facades/Agent.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
-<<<<<<< HEAD
-        'Laravel\\Dusk\\Browser' => __DIR__ . '/..' . '/laravel/dusk/src/Browser.php',
-        'Laravel\\Dusk\\Chrome\\ChromeProcess' => __DIR__ . '/..' . '/laravel/dusk/src/Chrome/ChromeProcess.php',
-        'Laravel\\Dusk\\Chrome\\SupportsChrome' => __DIR__ . '/..' . '/laravel/dusk/src/Chrome/SupportsChrome.php',
-        'Laravel\\Dusk\\Component' => __DIR__ . '/..' . '/laravel/dusk/src/Component.php',
-        'Laravel\\Dusk\\Concerns\\InteractsWithAuthentication' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/InteractsWithAuthentication.php',
-        'Laravel\\Dusk\\Concerns\\InteractsWithCookies' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/InteractsWithCookies.php',
-        'Laravel\\Dusk\\Concerns\\InteractsWithElements' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/InteractsWithElements.php',
-        'Laravel\\Dusk\\Concerns\\InteractsWithJavascript' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/InteractsWithJavascript.php',
-        'Laravel\\Dusk\\Concerns\\InteractsWithMouse' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/InteractsWithMouse.php',
-        'Laravel\\Dusk\\Concerns\\MakesAssertions' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/MakesAssertions.php',
-        'Laravel\\Dusk\\Concerns\\MakesUrlAssertions' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/MakesUrlAssertions.php',
-        'Laravel\\Dusk\\Concerns\\ProvidesBrowser' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/ProvidesBrowser.php',
-        'Laravel\\Dusk\\Concerns\\WaitsForElements' => __DIR__ . '/..' . '/laravel/dusk/src/Concerns/WaitsForElements.php',
-        'Laravel\\Dusk\\Console\\ChromeDriverCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/ChromeDriverCommand.php',
-        'Laravel\\Dusk\\Console\\ComponentCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/ComponentCommand.php',
-        'Laravel\\Dusk\\Console\\DuskCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/DuskCommand.php',
-        'Laravel\\Dusk\\Console\\DuskFailsCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/DuskFailsCommand.php',
-        'Laravel\\Dusk\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/InstallCommand.php',
-        'Laravel\\Dusk\\Console\\MakeCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/MakeCommand.php',
-        'Laravel\\Dusk\\Console\\PageCommand' => __DIR__ . '/..' . '/laravel/dusk/src/Console/PageCommand.php',
-        'Laravel\\Dusk\\Dusk' => __DIR__ . '/..' . '/laravel/dusk/src/Dusk.php',
-        'Laravel\\Dusk\\DuskServiceProvider' => __DIR__ . '/..' . '/laravel/dusk/src/DuskServiceProvider.php',
-        'Laravel\\Dusk\\ElementResolver' => __DIR__ . '/..' . '/laravel/dusk/src/ElementResolver.php',
-        'Laravel\\Dusk\\Http\\Controllers\\UserController' => __DIR__ . '/..' . '/laravel/dusk/src/Http/Controllers/UserController.php',
-        'Laravel\\Dusk\\OperatingSystem' => __DIR__ . '/..' . '/laravel/dusk/src/OperatingSystem.php',
-        'Laravel\\Dusk\\Page' => __DIR__ . '/..' . '/laravel/dusk/src/Page.php',
-        'Laravel\\Dusk\\TestCase' => __DIR__ . '/..' . '/laravel/dusk/src/TestCase.php',
-=======
->>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
         'Laravel\\Fortify\\Actions\\AttemptToAuthenticate' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/AttemptToAuthenticate.php',
         'Laravel\\Fortify\\Actions\\CompletePasswordReset' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/CompletePasswordReset.php',
         'Laravel\\Fortify\\Actions\\ConfirmPassword' => __DIR__ . '/..' . '/laravel/fortify/src/Actions/ConfirmPassword.php',
