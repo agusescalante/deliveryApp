@@ -22,6 +22,10 @@
         "vue-template-compiler": "^2.6.12"
 =======
         "tailwindcss": "^1.3.0"
+<<<<<<< HEAD
 >>>>>>> Closes #4 - Creo proyecto Laravel v8
+=======
+>>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
+>>>>>>> 1728bfa760297e70a0b28f2c2b96800baa4920e4
     }
 }

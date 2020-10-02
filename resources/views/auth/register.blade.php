@@ -21,7 +21,11 @@
             </div>
 
 =======
+<<<<<<< HEAD
 >>>>>>> Closes #4 - Creo proyecto Laravel v8
+=======
+>>>>>>> a1e50335cfcb1acf4818b72d70ed32b29ecc411f
+>>>>>>> 1728bfa760297e70a0b28f2c2b96800baa4920e4
             <div class="mt-4">
                 <x-jet-label value="{{ __('Email') }}" />
                 <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
