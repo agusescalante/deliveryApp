@@ -32,7 +32,11 @@ services:
        - "54321:5432"
   selenium:
    image: selenium/standalone-chrome    
-
+  alminer:
+    image: admminer
+    restart: always
+    ports:
+      - 8081:8080
 volumes:
   dbdata: {} 
 
