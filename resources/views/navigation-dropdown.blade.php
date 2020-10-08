@@ -20,7 +20,7 @@
                         {{ __('Orders') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="/employee" :active="request()->routeIs('employee')">
+                    <x-jet-nav-link href="{{ route('employees.index') }}" :active="request()->routeIs('employees.*')">
                         {{ __('Employee') }}
                     </x-jet-nav-link>
                 </div>
@@ -114,10 +114,13 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Main') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.*')">
                 {{ __('Orders') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('employees.index') }}" :active="request()->routeIs('employees.*')">
+                {{ __('employees') }}
             </x-jet-responsive-nav-link>
         </div>
 

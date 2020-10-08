@@ -51,11 +51,26 @@
                     </span>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                    Admin
+                    @foreach( $employees as $employee)
+                   @if($order->employee_id == $employee->id)
+                   {{ $employee->name }}
+                   @endif
+                   @endforeach
+
                 </td>
+                
                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                </td>
+                    <a href="{{ route('orders.edit',$order) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    </td>
+                    <td>
+                    <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
+                            
+                        @csrf
+                        {{ method_field('DELETE') }}  
+                        <button class="leading-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" title="Delete"> 
+                        Delete order </button> 
+                        </form>
+                        </td>
                 </tr>
                 @endforeach
 
