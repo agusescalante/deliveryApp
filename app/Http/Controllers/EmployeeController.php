@@ -6,7 +6,7 @@ use App\Models\Employee;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,9 @@ class OrderController extends Controller
         //
         $employees = Employee::all();
         $orders = Order::all();
-        return view('orders.index',[
-        'orders'=> $orders,'employees'=>$employees
+        return view('employees.index',[
+        'employees'=> $employees,'orders'=>$orders
         ]);
-        
     }
 
     /**
@@ -31,12 +30,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-        return view('orders.create',[
-        'employees'=> $employees
-        ]);
-       //return view('orders.create');
-
+        //
+        return view('employees.create',[
+            ]);
+        
     }
 
     /**
@@ -47,30 +44,27 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
+        
         $request->validate([
-            'description'=>'required',
-            'employee_id'=>'required',  
-            'price'=>'required'
+            'name'=>'required',
+            'email'=>'required'  
+            // 'bord_date'=>'required'
 
         ]);
 
         $input = $request->all();
-        $input['received'] = false;
 
-        Order::create($input);
-        return redirect('orders');
-
+        Employee::create($input);
+        return redirect('employees');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Employee $employee)
     {
         //
     }
@@ -78,43 +72,44 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Employee $employee)
     {
-        $employees = Employee::all();
-        return view('orders.edit',[
+        return view('employees.edit',[
             
-            'order'=> $order,
-            'employees'=>$employees
-        ]);
+                'employee'=> $employee
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Employee $employee)
     {
         $input = $request->all();
 
-        $order->update($input);
-        return redirect('orders');
+        $employee->update($input);
+        return redirect('employees');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Employee $employee)
     {
-        $order->delete();
-        return redirect('orders');   
+
+        $employee->delete();
+        return redirect('employees');
+
     }
 }
