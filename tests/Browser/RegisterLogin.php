@@ -21,7 +21,7 @@ class RegisterLogin extends DuskTestCase
 
         $user = User::factory()->make([
             'email'=>'test@laravel.com',
-            'password'=>bcrypt('123456789')        
+            'password'=>bcrypt('12345678')        
             ]);
 
         $this->browse(function (Browser $browser) use ($user) {

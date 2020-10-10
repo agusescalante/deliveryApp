@@ -2,10 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     
 
-            
-
-<!-- <!DOCTYPE html> 
-<html lang="en">-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +11,13 @@
 
     <!-- Tailwind -->
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <style>
+    <!-- <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
         .font-family-karla {
             font-family: karla;
         }
-    </style>
+    </style> -->
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -166,12 +162,12 @@
             </div>
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">Instagram</p>
+                <p class="text-xl font-semibold pb-5">Nuestros movimientos </p>
                 <div class="grid grid-cols-3 gap-3">
                     <!-- IMAGESSS -->
                 </div>
                 <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                    <i class="fab fa-instagram mr-2"></i> Seguinos
+                     Seguinos
                 </a>
             </div>
         </aside>
