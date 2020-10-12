@@ -108,15 +108,17 @@
                                     <div class="tab w-full overflow-hidden border-t">
                                         <input class="absolute opacity-0 " id="tab-multi-one" type="checkbox" name="tabs">
                                         <label class="block p-5 leading-normal cursor-pointer" for="tab-multi-one">Orders</label>
-                                    <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-                                  @foreach($orders as $order)
-                                  @if($order->employee_id == $employee->id)
-                                  {{ $order->description }} <br>
-                                    @endif
-                                    @endforeach
-                                  <!-- <p class="p-5">   </p> -->
+                                        @foreach($orders as $order)
+                                        @if($order->employee_id == $employee->id)
+                                        <div class="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+                                        {{ $order->description }} <br>
+                                            
+                                            
+                                        <!-- <p class="p-5">   </p> -->
+                                             </div>
+                                             @endif
+                                             @endforeach
                                 </div>
-                            </div>
                         </div>
                     </div>
                         
