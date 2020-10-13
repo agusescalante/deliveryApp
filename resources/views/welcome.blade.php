@@ -1,74 +1,5 @@
-<DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    
+<x-headeruser/>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>deliveryApp</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
-
-    <!-- Tailwind -->
-    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
-        .font-family-karla {
-            font-family: karla;
-        }
-    </style> -->
-
-    <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-</head>
-<body class="bg-white font-family-karla">
-
-    <!-- Top Bar Nav -->
-    <nav class="w-full py-4 bg-blue-800 shadow">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
-
-            <nav>
-                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <!-- <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li> -->
-                </ul>
-            </nav>
-                <!-- <div class=""> -->
-                @if (Route::has('login'))
-                <div class="flex items-center text-lg no-underline text-white pr-6">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="hover:text-gray-200 hover:underline px-4">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="hover:text-gray-200 hover:underline px-4">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="hover:text-gray-200 hover:underline px-4">Register</a>
-                        @endif
-                    @endif
-                </div>
-            @endif
-            <!-- </div>  -->
-        </div>
-
-    </nav>
-
-    <header class="w-full container mx-auto">
-        <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
-                deliveryApp
-            </a>
-            <p class="text-lg text-gray-600">
-            Delivery que satisface tus sentidos
-
-            Amamos la comida tanto como vos y por eso queremos llevar a tu mesa, tu comida favorita directamente desde 
-            la cocina de los mejores restaurantes. ¿La mejor parte? ¡Te la llevamos donde estés!
-            </p>
-        </div>
-    </header>
-
-    <!-- Topic Nav -->
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
         <div class="block sm:hidden">
             <a 
@@ -81,12 +12,9 @@
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
             <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology <i</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2"> Movimientos <i</a>
                 <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+                
             </div>
         </div>
     </nav>
@@ -156,19 +84,48 @@
                 <p class="pb-2">
                 Nos dedicamos a la compra y envío de pedidos en menos de 
                 una hora a través de repartidores independientes.</p>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
-                    Nuestros repartidores
+
+                <div class="p-10">
+                <style>
+                .dropdown:hover .dropdown-menu {    
+                display: block;
+                }
+                </style>
+
+                    <div class="dropdown inline-block relative">
+                        <button class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                        <span class="mr-1">Repartidores</span>
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+                        </button>
+                        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                        <li class="" title="Más detalles"><a href="{{ route('mainuser.create') }}" class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">
+                        
+                       
+                        @foreach($employees as $employee)
+                        {{ $employee->name }} {{ $employee->surname }} {{ $countTotal[0]['total'] }} <br>
+                            @endforeach </a>                         
+</li>
+                        </ul>
+                    </div>
+
+                    </div>
+                <!-- <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                     Repartidores
                 </a>
+                @foreach($employees as $employee)
+               {{ $employee->name }} {{ $employee->surname }}<br>
+                @endforeach -->
             </div>
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">Nuestros movimientos </p>
+                @foreach($orders as $order)
+               {{ $order->description }}   <br>
+                @endforeach
                 <div class="grid grid-cols-3 gap-3">
                     <!-- IMAGESSS -->
                 </div>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                     Seguinos
-                </a>
+                
             </div>
         </aside>
 

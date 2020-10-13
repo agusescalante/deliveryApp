@@ -28,9 +28,9 @@
             <div class="mt-2">
                 <div class="relative">
                     <label class=" block text-sm text-gray-600" for="cus_email">Assigned employee </label>
-                        <select class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" name="employee_id" id="employee_id">
+                        <select class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" name="employee_id" id="employee_id" >
                         @foreach($employees as $employee)
-                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                        <option value="{{ $employee->id }}" >{{ $employee->name }}</option>
                         @endforeach
                         </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">

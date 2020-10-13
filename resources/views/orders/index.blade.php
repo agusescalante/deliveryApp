@@ -20,6 +20,12 @@
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                     Received
                 </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Employee
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Creation details 
+                </th>
                 <th class="px-6 py-3 bg-gray-50"></th>
             </tr>
         </thead>
@@ -58,7 +64,10 @@
                    @endforeach
 
                 </td>
-                
+                <td class="px-6 py-4 whitespace-no-wrap">
+                    <div class="text-sm leading-5 text-gray-900">  {{  $order->created_at }}
+                    </div>
+                </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                     <a href="{{ route('orders.edit',$order) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                     </td>
