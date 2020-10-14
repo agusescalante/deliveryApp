@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class RegisterLogin extends DuskTestCase
+class ShortPasswordTest extends DuskTestCase
 {
     use DatabaseMigrations;
     /**
@@ -15,25 +15,23 @@ class RegisterLogin extends DuskTestCase
      *
      * @return void
      */
-    public function testRegister()
+    public function testPasswordTest()
     {
-        
         $user = User::factory()->make([
             'email'=>'test@laravel.com',
-            'password'=>bcrypt('12345678')        
+            'password'=>bcrypt('1234')        
             ]);
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/register')
-                    ->assertSee('Laravel')
+                    ->assertSee('Register')
                     ->type('name' ,$user->name)
+                    ->type('last_name' ,'last-name1')
                     ->type('email',$user->email)
-                    ->type('password','12345678')
-                    ->type('password_confirmation','12345678')
+                    ->type('password','1234')
                     ->press('REGISTER')
-                    ->assertSee('Dashboard');
+                    ->assertSee('Register');
         });
     }
-
-
+    
 }

@@ -46,7 +46,11 @@ class MainUserController extends Controller
      */
     public function details()
     {
-        //
+        $employees = Employee::all();
+        $orders = Order::all();
+        return view('mainuser.details',[
+        'employees'=> $employees,'orders'=>$orders
+        ]);
     }
     
     

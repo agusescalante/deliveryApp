@@ -16,15 +16,19 @@ use App\Http\Controllers\MainUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('orders',OrderController::class);
-Route::resource('employees',EmployeeController::class);
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::resource('orders',OrderController::class);
+    Route::resource('employees',EmployeeController::class);
+    
+ });
+
+// Route::resource('orders',OrderController::class);
+// Route::resource('employees',EmployeeController::class);
 Route::resource('mainuser',MainUserController::class);
 Route::resource('/',MainUserController::class);

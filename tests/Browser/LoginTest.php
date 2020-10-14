@@ -33,6 +33,24 @@ class LoginTest extends DuskTestCase
         });
     }
 
+    public function testLoginPath()
+    {
+        $user = User::factory()->create([
+            'email'=>'ejemplo@laravel.com',
+            'password'=>bcrypt('12345678')        
+            ]);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/')
+                    ->clickLink('Login')
+                    ->waitForText('Login')
+                    ->type('email',$user->email)
+                    ->type('password','12345678')
+                    ->press('LOGIN')
+                    ->assertPathIs('/dashboard');
+        });
+    }
+
     public function testLoginFailed()
     {
         $user = User::factory()->create([
