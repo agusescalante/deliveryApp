@@ -10,13 +10,6 @@
                 Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
             </a>
         </div>
-        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-            <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2"> Movimientos <i</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                
-            </div>
-        </div>
     </nav>
 
 
@@ -46,13 +39,13 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <!-- <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">No nos olvidamos de la comida</a> -->
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">No nos olvidamos de la comida</a>
+                    <p class="text-3xl font-bold hover:text-gray-700 pb-4">No nos olvidamos de la comida</p>
                     <img src="{!! asset('images/mostaza.jpg') !!}">
                     <p class="text-2xl font-bold hover:text-gray-700 pb-4">Domingos llevando "Combo Mostaza x2", te regalamos la bebida</p>
                     <!-- <p href="#" class="text-sm pb-3">
                          <a href="#" class="font-semibold hover:text-gray-800"></a>
                     </p> -->
-                    <a href="#" class="pb-6">Lorem ipsum dolor sit amet,  porta volutpat. In sit amet posuere magna..</a>
+                    <p class="pb-6"></p>
                 </div>
             </article>
 
@@ -62,18 +55,14 @@
                                 <!-- IMAGEN -->
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">orasdasdt</a>
-                    <a href="#" class="pb-6">texto</a>
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Grido</a>
+                    <img src="{!! asset('images/grido_helado.jpg') !!}">
+                    <a href="#" class="pb-6">¿Con ganas de comer Helado? ¡Grido Helados tiene la solución! Elegí la opción que más te guste, 
+                    entre más de 30 sabores: 
+                    frutilla, maracuyá, tramontana, chocolate con almendras o dulce de leche con nuez son solo algunas de las opciones que Grido 
+                    Delivery tiene para vos. Además no podes dejar de probar sus deliciosos Palitos, las Tortas Grido o sus exquisitos Bombones Helados</a>
                 </div>
             </article>
-
-            <!-- Pagination -->
-            <div class="flex items-center py-8">
-                <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i class="fas fa-arrow-right ml-2"></i></a>
-            </div>
-
         </section>
 
         <!-- Sidebar Section -->
@@ -86,6 +75,7 @@
                 una hora a través de repartidores independientes.</p>
 
                 <div class="p-10">
+
                 <style>
                 .dropdown:hover .dropdown-menu {    
                 display: block;
@@ -102,7 +92,8 @@
                         
                        
                         @foreach($employees as $employee)
-                        {{ $employee->name }} {{ $employee->surname }} {{ $countTotal[0]['total'] }} <br>
+                        {{ $employee->name }} {{ $employee->surname }}  <br>
+                        <!-- {{ $countTotal[0]['total'] }} -->
                             @endforeach </a>                         
 </li>
                         </ul>
@@ -136,19 +127,11 @@
             class="relative w-full flex items-center invisible md:visible md:pb-12" 
             x-data="getCarouselData()"
         >
-            <button 
-                class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
-                x-on:click="decrement()">
-                &#8592;
-            </button>
+            
             <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
                 <img class="w-1/6 hover:opacity-75" :src="image">
             </template>
-            <button 
-                class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
-                x-on:click="increment()">
-                &#8594;
-            </button>
+            
         </div>
         <div class="w-full container mx-auto flex flex-col items-center">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
@@ -158,28 +141,6 @@
         </div>
     </footer>
 
-    <script>
-        function getCarouselData() {
-            return {
-                currentIndex: 0,
-                images: [
-                    "{!! asset('images/monarca.png') !!}",
-                    "{!! asset('images/elnoble.png') !!}",
-                    "{!! asset('images/glock.jpeg') !!}",
-                    "{!! asset('images/antares.png') !!}",
-                    "{!! asset('images/subway.png') !!}",
-                    "{!! asset('images/logomostaza.png') !!}",
-                    "{!! asset('images/carrefour.png') !!}"
-                ],
-                increment() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                },
-                decrement() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                },
-            }
-        }
-    </script>
 
 </body>
 </html>

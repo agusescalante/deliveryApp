@@ -7,7 +7,7 @@
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                 <a href="{{ route('employees.create') }}">
-                    <button class="leading-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full"> Add employee </button>                                                       
+                    <button id="create" name="create" class="leading-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full"> Add employee </button>                                                       
                 </a>
         
         <thead>
