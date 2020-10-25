@@ -15,14 +15,16 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-       $employee = Employee::where('name','Tomas')->first();
+        //$employee = Employee::where('name','Tomas')->first();
 
-       $order = Order::create([
-           'price'=>'230.50',
-           'description'=>'Papas Lays',
-           'received'=>'false'
-       ]);
-
-       $order->employee()->associate($employee)->save();
-    }
+        // $order = Order::create([
+        //     'price'=>'230.50',
+        //     'description'=>'Papas Lays',
+        //     'received'=>'false',
+        // ]);
+        // $order->employee()->associate($employee)->save();
+        Order::factory(10)
+        ->has(Employee::factory()->count(3))
+        ->create();
+        }
 }
