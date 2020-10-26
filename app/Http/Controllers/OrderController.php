@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -58,6 +59,7 @@ class OrderController extends Controller
 
         $input = $request->all();
         $input['received'] = false;
+        $input['user_id'] = $request->user()->id;
 
         Order::create($input);
         return redirect('orders');
@@ -83,6 +85,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        $this->authorize('update',$order);
         $employees = Employee::all();
         return view('orders.edit',[
             
@@ -100,6 +103,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $this->authorize('update',$order);
         $input = $request->all();
 
         $order->update($input);

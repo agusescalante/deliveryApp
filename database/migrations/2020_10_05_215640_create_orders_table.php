@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('received');
             $table->string('description');
             $table->foreignId('employee_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

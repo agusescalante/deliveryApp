@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\MainUserController;
+use App\Models\Employee;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +19,31 @@ use App\Http\Controllers\MainUserController;
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::any('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+Route::any('details', function () {
+        $employees = Employee::all();
+        $orders = Order::all();
+        return view('details',[
+        'orders'=> $orders,'employees'=>$employees
+        ]);
+})->name('details');
+
+
+Route::any('/', function () {
+        $employees = Employee::all();
+        $orders = Order::all();
+        return view('welcome',[
+        'orders'=> $orders,'employees'=>$employees
+        ]);
+})->name('welcome');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    
     Route::resource('orders',OrderController::class);
     Route::resource('employees',EmployeeController::class);
     
  });
-
-// Route::resource('orders',OrderController::class);
-// Route::resource('employees',EmployeeController::class);
-Route::resource('mainuser',MainUserController::class);
-Route::resource('/',MainUserController::class);
