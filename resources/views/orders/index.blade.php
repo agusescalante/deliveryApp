@@ -67,7 +67,7 @@
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900">  
-                    <img title="{{ $order->user->name }}" class="h-8 w-8 rounded-full object-cover" src="{{ $order->user->getProfilePhotoUrlAttribute() }}"  />
+                    <img title="{{ $order->user->name }} {{ $order->user->last_name }} " class="h-8 w-8 rounded-full object-cover" src="{{ $order->user->getProfilePhotoUrlAttribute() }}"  />
                     </div>
                 </td>
 
@@ -75,21 +75,23 @@
                         <div class="text-sm leading-5 text-gray-900">  
                             @can('update',$order)
                             <a href="{{ route('orders.edit',$order) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            @endcan
                         </div>
                 </td>
     
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    <div class="text-sm leading-5 text-gray-900">  
+                    <div class="text-sm leading-5 text-gray-900"> 
+                        @can('delete',$order) 
                         <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
                                 
                             @csrf
                             {{ method_field('DELETE') }}  
                             <button class="leading-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" title="Delete"> 
                             Delete order </button> 
+                            @endcan
 
                         </form>
 
-                @endcan
                 </div>
 
                 </td>
