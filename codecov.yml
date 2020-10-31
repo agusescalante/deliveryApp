@@ -1,0 +1,4 @@
+ignore:
+  - "app/Actions"  
+  - "app/Https/Middleware"  
+  
