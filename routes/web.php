@@ -19,12 +19,12 @@ use App\Models\Order;
 
 
 
-Route::any('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
 
-Route::any('details', function () {
+Route::get('details', function () {
         $employees = Employee::all();
         $orders = Order::all();
         return view('details',[
@@ -33,7 +33,7 @@ Route::any('details', function () {
 })->name('details');
 
 
-Route::any('/', function () {
+Route::get('/', function () {
         $employees = Employee::all();
         $orders = Order::all();
         return view('welcome',[
