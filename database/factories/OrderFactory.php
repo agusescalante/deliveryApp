@@ -1,10 +1,11 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Employee;
 use App\Models\Order;
 use App\Models\User;
-use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class OrderFactory extends Factory
 {
@@ -27,7 +28,7 @@ class OrderFactory extends Factory
             'description' => $this->faker->randomElement(['Cerceza Antares 1L','Papas Lays 100g','Gomitas Mogul 250g']),
             'received' => false,
             'employee_id' => Employee::factory()->create(),
-            'user_id'=>User::factory()->create(),
+            'user_id' =>User::factory()->create(),
         ];
     }
 }
