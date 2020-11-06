@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('price',10,2);
             $table->boolean('received');
             $table->string('description');
-            $table->foreignId('employee_id');
+            $table->foreignId('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreignId('user_id');
             $table->timestamps();
         });

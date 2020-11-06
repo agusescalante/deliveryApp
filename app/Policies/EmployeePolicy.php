@@ -2,11 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Order;
+use App\Models\Employee;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrderPolicy
+class EmployeePolicy
 {
     use HandlesAuthorization;
 
@@ -19,18 +20,20 @@ class OrderPolicy
     public function viewAny(User $user)
     {
         return true;
+
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return mixed
      */
-    public function view(User $user, Order $order)
+    public function view(User $user, Employee $employee)
     {
         return true;
+
     }
 
     /**
@@ -41,56 +44,61 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return ($user->role == 'boss');
+
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return mixed
      */
-    public function update(User $user, Order $order)
+    public function update(User $user, Employee $employee)
     {
-        return ($user->role == 'boss') or ($user->id == $order->user_id) ;
+        return ($user->role == 'boss');
 
-        // return $user->id === $order->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return mixed
      */
-    public function delete(User $user, Order $order)
+    public function delete(User $user, Employee $employee)
     {
-        return $user->role === 'boss';
+        return $user->role == 'boss'
+                            ? Response::allow()
+                            : Response::deny('You do not own this post.');
+
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return mixed
      */
-    public function restore(User $user, Order $order)
+    public function restore(User $user, Employee $employee)
     {
         return true;
+
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Employee  $employee
      * @return mixed
      */
-    public function forceDelete(User $user, Order $order)
+    public function forceDelete(User $user, Employee $employee)
     {
         return true;
+
     }
 }

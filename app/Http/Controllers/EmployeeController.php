@@ -13,15 +13,27 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+       
+        
         $employees = Employee::all();
+        $employee = Employee::with(['role'=>'boss']);
         $orders = Order::all();
+
+        $search = $request->surname;
+        if(($search != null) && !(is_int($search))){
+            $employees = Employee::where('surname','LIKE','%'. $search .'%')
+                                                    ->get();
+            return view('employees.index',[
+                'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);                                            
+        }else{
+
         return view('employees.index',[
-        'employees'=> $employees,'orders'=>$orders
-        ]);
+        'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.

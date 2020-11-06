@@ -107,6 +107,7 @@ return [
     */
 
     'faker_locale' => 'en_US',
+    'Input' => Illuminate\Support\Facades\Input::class,
 
     /*
     |--------------------------------------------------------------------------
