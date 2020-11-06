@@ -70,9 +70,8 @@ class EmployeePolicy
      */
     public function delete(User $user, Employee $employee)
     {
-        return $user->role == 'boss'
-                            ? Response::allow()
-                            : Response::deny('You do not own this post.');
+        return $user->role == 'boss';
+                           
 
     }
 
