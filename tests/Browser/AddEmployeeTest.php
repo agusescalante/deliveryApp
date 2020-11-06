@@ -18,6 +18,7 @@ class AddEmployeeTest extends DuskTestCase
     {
         $user = User::factory()->create([
             'email'=>'ejemplo@laravel.com',
+            'role'=>'boss',
             'password'=>bcrypt('12345678')        
             ]);
         $this->browse(function (Browser $browser) use ($user) {
