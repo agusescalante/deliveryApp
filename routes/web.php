@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EmployeeController;
 use App\Models\Employee;
 use App\Models\Order;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +49,34 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
     Route::resource('orders',OrderController::class);
+
     Route::resource('employees',EmployeeController::class);
-    
- });
+
+    Route::get('/user', function () {
+                $users = DB::table('users')
+                        ->join('orders', function ($join) {
+                                $join->on('users.id', '=', 'orders.user_id')
+                                        ->groupBy('orders.user_id')->get();  
+
+        return view('user',['users'=>$users]);
+    })->name('user');
+    });
+
+//     Route::post('/search', function (){
+
+//         $q = Input::get('q');
+//         if($q != ""){
+//                 $employee = Employee::where('surname','LIKE','%'. $q .'%')
+//                                         ->orWhere('email','LIKE','%'. $q .'%')
+//                                         ->get();
+//                         if(count($employee) > 0)
+//                                 return view('employee.index')->withDetails($employee)->withQuery($q);
+//                         }
+//                 return view('employee.index')->withMessage("No employee");
+
+
+        
+// });
+
+
+});

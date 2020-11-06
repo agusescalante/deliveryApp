@@ -18,7 +18,7 @@
 
             <div class="">
                 <label class="block text-sm text-gray-00" for="surname">Description</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="Description" name="Description" type="text" required=""  aria-label="name" value="{{ $order->description }}">
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="description" name="description" type="text" required=""  aria-label="name" value="{{ $order->description }}">
                         @error('surname')
                         <div class="text-red-600">
                             {{ $message }}

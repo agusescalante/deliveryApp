@@ -37,65 +37,38 @@
 
         <tbody class="bg-white divide-y divide-gray-200">
                 <tr>
-                @foreach($orders as $order)
 
                 <td class="px-6 py-4 whitespace-no-wrap">
                         <div class="text-sm leading-5 font-medium text-gray-900">
-                        {{ $order->description }}
+                        {{$users}}
                         </div>   
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    <div class="text-sm leading-5 text-gray-900"> $ {{  $order->price }}
+                    <div>
+                       
                     </div>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if($order->received) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
-                    @if($order->received)
-                        Sent
-                    @else
-                        Pending
-                    @endif
                     </span>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                    @foreach( $employees as $employee)
-                   @if($order->employee_id == $employee->id)
-                   {{ $employee->name }}
-                   @endif
-                   @endforeach
+                   
 
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900">  
-                    <img title="{{ $order->user->name }} {{ $order->user->last_name }} " class="h-8 w-8 rounded-full object-cover" src="{{ $order->user->getProfilePhotoUrlAttribute() }}"  />
                     </div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap">
                         <div class="text-sm leading-5 text-gray-900">  
-                            @can('update',$order)
-                            <a href="{{ route('orders.edit',$order) }}" title="Edit" class="text-indigo-600 hover:text-indigo-900"><svg class="h-8 w-8 text-green-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>   <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />  <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /> </svg>
-                            </a>
-                            @endcan
-
-                            @cannot('update',$order)
-                            
-                             <svg class="h-8 w-8 text-red-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <line x1="19" y1="7" x2="19" y2="10" />  <line x1="19" y1="14" x2="19" y2="14.01" /></svg>
-                             <p>Unauthorized</p>
-                            @endcannot
+                           
                         </div>
                 </td>
     
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900"> 
-                        @can('delete',$order) 
-                        <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
-                                
-                            @csrf
-                            {{ method_field('DELETE') }}  
-                            <button class="leading-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" title="Delete"> 
-                            Delete order </button> 
-                            @endcan
+                       
 
                         </form>
 
@@ -104,7 +77,6 @@
                 </td>
 
                 </tr>
-                @endforeach
 
              </tbody>
 

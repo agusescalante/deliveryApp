@@ -88,9 +88,8 @@ class OrderController extends Controller
         $this->authorize('update',$order);
         $employees = Employee::all();
         return view('orders.edit',[
-            
-            'order'=> $order,
-            'employees'=>$employees
+                    'order'=> $order,
+                    'employees'=>$employees
         ]);
     }
 
@@ -101,6 +100,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Order $order)
     {
         $this->authorize('update',$order);
