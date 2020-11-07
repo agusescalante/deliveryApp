@@ -1,6 +1,7 @@
 <x-headeruser/>
 
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
+     
         <div class="block sm:hidden">
             <a 
                 href="#" 
@@ -14,10 +15,9 @@
 
 
     <div class="container mx-auto flex flex-wrap py-6">
-
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-
+            
             <article class="flex flex-col shadow my-4">
                 <div class="bg-white flex flex-col justify-start p-6">
                     <p class="text-3xl text-green-700 font-bold hover:text-gray-700 pb-4">Los Viernes descuento 10% en cervezas artesanales!</p>

@@ -38,7 +38,7 @@
         <tbody class="bg-white divide-y divide-gray-200">
                 <tr>
                 @foreach($orders as $order)
-
+                @can('view',$order)
                 <td class="px-6 py-4 whitespace-no-wrap">
                         <div class="text-sm leading-5 font-medium text-gray-900">
                         {{ $order->description }}
@@ -63,7 +63,6 @@
                    {{ $employee->name }}
                    @endif
                    @endforeach
-
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900">  
@@ -78,11 +77,11 @@
                             </a>
                             @endcan
 
-                            @cannot('update',$order)
+                            <!-- @cannot('update',$order)
                             
                              <svg class="h-8 w-8 text-red-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <line x1="19" y1="7" x2="19" y2="10" />  <line x1="19" y1="14" x2="19" y2="14.01" /></svg>
                              <p>Unauthorized</p>
-                            @endcannot
+                            @endcannot -->
                         </div>
                 </td>
     
@@ -104,6 +103,8 @@
                 </td>
 
                 </tr>
+                @endcan
+
                 @endforeach
 
              </tbody>

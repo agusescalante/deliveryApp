@@ -23,5 +23,12 @@ class UserTest extends TestCase
         $this->assertFalse($userIsBoss);
     }
 
+    public function testUserNotBossCreate()
+    {
+        $user = User::factory()->create(['role' => 'user']);
+        $employee = Employee::factory()->create();
+        $response = $this->actingAs($user)->put('employees/'.$employee->id);
+        $response->assertForbidden();
+    }
 
 }

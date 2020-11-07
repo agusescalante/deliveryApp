@@ -44,7 +44,7 @@ class EmployeePolicy
      */
     public function create(User $user)
     {
-        return ($user->role == 'boss');
+        return $user->role == 'boss';
 
     }
 
@@ -57,7 +57,7 @@ class EmployeePolicy
      */
     public function update(User $user, Employee $employee)
     {
-        return ($user->role == 'boss');
+        return $user->role == 'boss';
 
     }
 

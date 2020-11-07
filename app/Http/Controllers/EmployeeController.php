@@ -22,7 +22,9 @@ class EmployeeController extends Controller
         $orders = Order::all();
 
         $search = $request->surname;
-        if(($search != null) && !(is_int($search))){
+
+        if((isset($search)) && !(is_numeric($search))){
+            // $search->validate(['surname'=>'required']);
             $employees = Employee::where('surname','LIKE','%'. $search .'%')
                                                     ->get();
             return view('employees.index',[
@@ -43,6 +45,8 @@ class EmployeeController extends Controller
     public function create()
     {
         //
+        $this->authorize('create');
+
         return view('employees.create',[
             ]);
         
@@ -89,6 +93,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
+        $this->authorize('update',$employee);
+
         return view('employees.edit',[
             
                 'employee'=> $employee
@@ -104,6 +110,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+
+        $this->authorize('update',$employee);
         $input = $request->all();
 
         $employee->update($input);

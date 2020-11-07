@@ -2,24 +2,26 @@
 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
 <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " >
+        <div class="py-2  align-middle inline-block bg-gray-200 min-w-full sm:px-6 lg:px-8">
 
-            <form class="min-w-full divide-y divide-gray-600 bg-gray-200 sm:px-6 lg:px-2" action="{{ route('employees.index') }}" method="GET" role="search">
+            <form class=" min-w-full  divide-y divide-gray-600 bg-gray-200 sm:px-6 lg:px-2" action="{{ route('employees.index') }}" method="GET" role="search">
                 <div class="input-group">
                     <span class="input-group-btn mr-5 mt-1">
                     
-                        <input type="text" class="form-control mr-2" name="surname" placeholder="Search employee surname" id="surname">
-                        <button class="btn btn-danger" type="submit" title="Refresh page">
-                                <span class="fas fa-sync-alt"></span>
-                                <svg class="h-8 w-8 text-purple-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="11" cy="11" r="8" />  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                        </button>
+                        <input type="text" class="inline-flex items-center px-4 py-2  rounded-full border-black form-control mr-2" name="surname" placeholder="Search employee surname" id="surname" required>
+                            <button class="btn btn-danger items-center " type="submit" title="Refresh page">
+                                    <span class="fas fa-sync-alt"></span>
+                                    
+                                    <svg class="h-8 w-8 text-purple-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="11" cy="11" r="8" />  <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                    
+                            </button>
 
                     </span>
                 </div>
             </form>
                      
-                <table class="min-w-full divide-y divide-gray-600 bg-gray-200" >
+                <table class="min-w-full divide-y divide-gray-600 bg-gray-600" >
                 @can('create', \App\Models\Employee::class)
                 <a href="{{ route('employees.create') }}">
                     <button id="create" name="create" class="leading-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full"> Add employee </button>                                                       
