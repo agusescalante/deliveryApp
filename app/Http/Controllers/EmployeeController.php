@@ -15,25 +15,20 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-       
-        
         $employees = Employee::all();
-        $employee = Employee::with(['role'=>'boss']);
+        // $employee = Employee::with(['role'=>'boss']);
         $orders = Order::all();
 
         $search = $request->surname;
 
         if((isset($search)) && !(is_numeric($search))){
-            // $search->validate(['surname'=>'required']);
             $employees = Employee::where('surname','LIKE','%'. $search .'%')
                                                     ->get();
-            return view('employees.index',[
-                'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);                                            
-        }else{
-
-        return view('employees.index',[
-        'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);
+                                                        
         }
+        return view('employees.index',[
+            'employees'=> $employees,'orders'=>$orders]);
+
     }
 
 
@@ -45,7 +40,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
-        $this->authorize('create');
+        $this->authorize('create', App\Models\Employee::class);
 
         return view('employees.create',[
             ]);

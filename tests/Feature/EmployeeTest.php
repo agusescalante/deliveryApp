@@ -21,6 +21,29 @@ class EmployeeTest extends TestCase
         $response->assertRedirect('login');
     }
 
+    public function testNotEditEmployeeUser()
+    {
+        //Usuarios con role "user" no pueden crear ni editar en la seccion "Employee"
+        
+        $user = User::factory()->create(['role'=>'user']);
+        $employee = Employee::factory()->create();
+        $response = $this->actingAs($user)
+            ->get('employees/'.$employee->id.'/edit');
+        $response->assertForbidden();    
+        
+    }
+
+    public function testNotCreateEmployeeUser()
+    {
+        //Usuarios con role "user" no pueden crear ni editar en la seccion "Employee"
+        
+        $user = User::factory()->create(['role'=>'user']);
+        $employee = Employee::factory()->create();
+        $response = $this->actingAs($user)
+            ->get('employees/create');
+        $response->assertForbidden();    
+        
+    }
     
     
 

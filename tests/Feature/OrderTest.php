@@ -24,7 +24,7 @@ class OrderTest extends TestCase
 
     public function testEditOrderUser()
     {
-        //El usuario que creo la orden la puede editar
+        //El usuario que creo la order la puede editar
 
         $user = User::factory()->create();
         $order = Order::factory()->create(['user_id'=>$user->id]);

@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Employee;
 use App\Models\User;
 use App\Models\Order;
@@ -23,12 +24,28 @@ class UserTest extends TestCase
         $this->assertFalse($userIsBoss);
     }
 
-    public function testUserNotBossCreate()
+    public function testUserNotBossEdit()
     {
         $user = User::factory()->create(['role' => 'user']);
         $employee = Employee::factory()->create();
         $response = $this->actingAs($user)->put('employees/'.$employee->id);
         $response->assertForbidden();
+    }
+
+    public function testUserNotBossCreate()
+    {
+        $user = User::factory()->create(['role' => 'user']);
+        $employee = Employee::factory()->create();
+        $response = $this->actingAs($user)->get('employees/create');
+        $response->assertForbidden();
+    }
+
+    public function testUsersDatabaseHasColumns()
+    {
+        $this->assertTrue( 
+          Schema::hasColumns('users', [
+            'id', 'name', 'role', 'last_name', 'created_at', 'email', 'email_verified_at', 'password'
+        ]));
     }
 
 }
