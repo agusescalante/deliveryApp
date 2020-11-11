@@ -25,7 +25,7 @@ class OrderFactory extends Factory
     {
         return [
             'price' =>$this->faker->randomNumber(3,false),
-            'description' => $this->faker->randomElement(['Cerceza Antares 1L','Papas Lays 100g','Gomitas Mogul 250g']),
+            'description' => $this->faker->randomElement(['Cerceza Antares 1L','Papas Lays 100g','Gomitas Mogul 250g', 'Fernet Branca 750ml']),
             'received' => false,
             'employee_id' => Employee::factory()->create(),
             'user_id' =>User::factory()->create(),

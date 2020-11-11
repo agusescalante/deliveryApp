@@ -116,14 +116,19 @@
                         </form>
                         
 
-                </td> 
-                </tr>                                                     
-                @endforeach
+                    </td> 
+                    
+                    
+                    </tr>    
+                                                    
+                    @endforeach
                 
-            <!-- More rows... -->
-        </tbody>
-        
-        </table>
+                <!-- More rows... -->
+            </tbody>
+
+            </table>
+                
+                {{ $employees->links() }}
          </div>
         </div>
     </div>

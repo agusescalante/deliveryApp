@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
+
 class EmployeeController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $employees = Employee::all();
+        $employees = Employee::paginate(10);
         // $employee = Employee::with(['role'=>'boss']);
         $orders = Order::all();
 
@@ -23,11 +24,10 @@ class EmployeeController extends Controller
 
         if((isset($search)) && !(is_numeric($search))){
             $employees = Employee::where('surname','LIKE','%'. $search .'%')
-                                                    ->get();
+            ->paginate(15);
                                                         
         }
-        return view('employees.index',[
-            'employees'=> $employees,'orders'=>$orders]);
+        return view('employees.index',['employees'=> $employees,'orders'=>$orders]);
 
     }
 

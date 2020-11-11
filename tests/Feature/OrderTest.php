@@ -45,7 +45,7 @@ class OrderTest extends TestCase
         
     }
     
-    public function testCasSeeDashboardAsUser()
+    public function testCanSeeDashboardAsUser()
     {
         $user = User::factory()->create();
 
@@ -54,7 +54,51 @@ class OrderTest extends TestCase
 
         $response->assertStatus(200);
     }
-
     
+    // public function testCanSeeOrderAsUser()
+    // {
+    //     $user = User::factory()->create(['role'=>'boss']);
+    //     $order = Order::factory()->create();
+    //     $employee = Employee::factory()->create();
 
+
+    //     $response = $this->actingAs($user)
+    //         ->put('orders.create',[
+    //             'description'=>'Papas fritas',
+    //             'price'=>'123.40',
+    //             'received'=>false,
+    //             'employee_id'=>$employee->id
+    //         ]);
+        
+
+    //     $response->assertStatus(200);
+    // }
+    
+    public function testViewMyOrders()
+    {
+    
+        $user1 = User::factory()->create(['role'=>'user']);
+        $user2 = User::factory()->create(['role'=>'user']);
+
+        $order1 = Order::factory()->create(['user_id'=>$user1->id]);
+        $order2 = Order::factory()->create(['user_id'=>$user2->id]);
+
+        $response = $this->actingAs($user1)->get('orders');
+        $response->assertSee($order1->description);
+    }
+
+    public function testNotViewOtherOrders()
+    {
+    
+        $user1 = User::factory()->create(['role'=>'user']);
+        $user2 = User::factory()->create(['role'=>'user']);
+
+        $order1 = Order::factory()->create(['user_id'=>$user1->id]);
+        $order2 = Order::factory()->create(['user_id'=>$user2->id]);
+
+        $response = $this->actingAs($user1)->get('orders');
+        $test = $order2->description;
+        $response->assertDontSeeText($test);
+    
+    }
 }
