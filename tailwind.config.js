@@ -16,11 +16,5 @@ module.exports = {
         backgroundColor: ['responsive', 'hover', 'focus', 'checked']
     },
     plugins: [require('@tailwindcss/ui'),
-            ('tailwindcss-plugins/pagination')({
-                color: colors['purple-dark'],
-                linkFirst: 'mr-6 border rounded',
-                linkSecond: 'rounded-l border-l',
-                linkBeforeLast: 'rounded-r border-r',
-                linkLast: 'ml-6 border rounded',            })],
-    
+            ],
 };
