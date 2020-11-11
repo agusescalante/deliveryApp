@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\User;
 
 class headeruser extends Component
 {
@@ -11,9 +12,10 @@ class headeruser extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $users;
+    public function __construct($users)
     {
-        //
+        $this->users = $users;
     }
 
     /**
@@ -23,6 +25,7 @@ class headeruser extends Component
      */
     public function render()
     {
+        // $users = DB::table('users')->count();
         return view('components.headeruser');
     }
 }

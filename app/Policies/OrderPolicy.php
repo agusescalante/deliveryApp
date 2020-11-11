@@ -30,7 +30,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
-        return true;
+        return ($user->role == 'boss') or ($user->id == $order->user_id) ;
     }
 
     /**

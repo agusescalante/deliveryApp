@@ -39,12 +39,22 @@ Route::get('details', function () {
 
 
 Route::get('/', function () {
+        
+        // $users = User::table('users')
+        //              ->select(User::raw('count(*)'))
+
+        //              ->get();
+                //      $users = DB::table('users')->distinct(count(id))->get();
+        $users = DB::table('users')->count();
+        
         $employees = Employee::all();
+
         $orders = Order::all();
         return view('welcome',[
-        'orders'=> $orders,'employees'=>$employees
+        'orders'=> $orders,'employees'=>$employees, 'users'=>$users
         ]);
 })->name('welcome');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     

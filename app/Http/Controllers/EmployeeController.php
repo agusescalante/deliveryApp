@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
+
 class EmployeeController extends Controller
 {
     /**
@@ -15,23 +16,19 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-       
-        
-        $employees = Employee::all();
-        $employee = Employee::with(['role'=>'boss']);
+        $employees = Employee::paginate(10);
+        // $employee = Employee::with(['role'=>'boss']);
         $orders = Order::all();
 
         $search = $request->surname;
-        if(($search != null) && !(is_int($search))){
-            $employees = Employee::where('surname','LIKE','%'. $search .'%')
-                                                    ->get();
-            return view('employees.index',[
-                'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);                                            
-        }else{
 
-        return view('employees.index',[
-        'employees'=> $employees,'employee'=> $employee,'orders'=>$orders]);
+        if((isset($search)) && !(is_numeric($search))){
+            $employees = Employee::where('surname','LIKE','%'. $search .'%')
+            ->paginate(15);
+                                                        
         }
+        return view('employees.index',['employees'=> $employees,'orders'=>$orders]);
+
     }
 
 
@@ -43,6 +40,8 @@ class EmployeeController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', App\Models\Employee::class);
+
         return view('employees.create',[
             ]);
         
@@ -89,6 +88,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
+        $this->authorize('update',$employee);
+
         return view('employees.edit',[
             
                 'employee'=> $employee
@@ -104,6 +105,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+
+        $this->authorize('update',$employee);
         $input = $request->all();
 
         $employee->update($input);
