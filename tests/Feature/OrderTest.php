@@ -84,6 +84,7 @@ class OrderTest extends TestCase
         $order2 = Order::factory()->create(['user_id'=>$user2->id]);
 
         $response = $this->actingAs($user1)->get('orders');
+        $this->assertEquals($user2->id,$order2->user->id);
         $response->assertSee($order1->description);
     }
 

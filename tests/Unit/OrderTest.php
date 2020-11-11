@@ -23,6 +23,8 @@ class OrderTest extends TestCase
         $order = Order::factory()->create(['user_id'=>$user->id]);
         $order2 = Order::factory()->create(['user_id'=>$user->id]);        
         $this->assertEquals($user->id,$order->user->id);
+        $this->assertEquals($user->id,$order2->user->id);
+
     }
 
     public function testOrdersDatabaseHasColumns()
