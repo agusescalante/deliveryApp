@@ -23,28 +23,19 @@ use App\Models\User;
 */
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
 Route::get('details', function () {
-        $employees = Employee::all();
+        $employees = Employee::paginate(10);
         $orders = Order::all();
+        $users = DB::table('users')->count();
+
         return view('details',[
-        'orders'=> $orders,'employees'=>$employees
+        'orders'=> $orders,'employees'=>$employees,'users'=>$users
         ]);
 })->name('details');
 
 
 Route::get('/', function () {
         
-        // $users = User::table('users')
-        //              ->select(User::raw('count(*)'))
-
-        //              ->get();
-                //      $users = DB::table('users')->distinct(count(id))->get();
         $users = DB::table('users')->count();
         
         $employees = Employee::all();
@@ -71,22 +62,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('user',['users'=>$users]);
     })->name('user');
     });
-
-//     Route::post('/search', function (){
-
-//         $q = Input::get('q');
-//         if($q != ""){
-//                 $employee = Employee::where('surname','LIKE','%'. $q .'%')
-//                                         ->orWhere('email','LIKE','%'. $q .'%')
-//                                         ->get();
-//                         if(count($employee) > 0)
-//                                 return view('employee.index')->withDetails($employee)->withQuery($q);
-//                         }
-//                 return view('employee.index')->withMessage("No employee");
-
-
-        
-// });
-
 
 });

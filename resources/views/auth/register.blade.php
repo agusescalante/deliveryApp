@@ -27,8 +27,8 @@
 
             <div class="mt-4">
                 <x-jet-label value="{{ __('Role') }}" />
-                <select class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" name="role" id="role" >
-                        <option disabled selected >Selection role user</option>
+                <select class="block appearance-none w-full bg-green-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" name="role" id="role" required >
+                        <option disabled selected  required>Select user role</option>
                         <option value="boss" >Boss</option>
                         <option value="user" >User</option>
 
