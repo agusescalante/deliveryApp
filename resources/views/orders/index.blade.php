@@ -4,12 +4,26 @@
 <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
          <div class="bg-gray-50 py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 border-gray-50" >
+            
+            <div class="">
+            
+                </div>
+                @endif
+          </div>
+
+        </div>
             <div class="shadow overflow-hidden border-b bg-gray-50 border-gray-50 sm:rounded-lg">
+
                 <table class="min-w-full divide-y divide-gray-400">
                 
                 <a href="{{ route('orders.create') }}">
                     <button class=" leading-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> Create order </button>                                                       
                 </a>
+
+                <span class="px-8 .w-1/2 text-m .pl-24 leading-5 font-semibold rounded-full  bg-orange-200 text-red-800">
+                @if($pending > 0)
+                Total pending  {{ $pending }}  
+                <span>
                 
         <thead>
             <tr class="bg-gray-50">           
@@ -95,7 +109,7 @@
                             <button class="leading-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" title="Delete"> 
                             Delete order </button> 
                             @endcan
-
+                           
                         </form>
 
                 </div>

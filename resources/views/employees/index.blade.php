@@ -127,8 +127,9 @@
             </tbody>
 
             </table>
-                
+                <div class="px-6 py-4">
                 {{ $employees->links() }}
+                </div>
          </div>
         </div>
     </div>

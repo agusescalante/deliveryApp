@@ -1,4 +1,4 @@
-<x-headeruser/>
+<x-headeruser :users="$users"/>
 
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
      
@@ -8,7 +8,6 @@
                 class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center" 
                 @click="open = !open"
             >
-                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
             </a>
         </div>
     </nav>

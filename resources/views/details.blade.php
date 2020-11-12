@@ -1,4 +1,4 @@
-<x-headeruser/>
+<x-headeruser :users="$users"/>
 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
 <div class="flex flex-col">
@@ -73,11 +73,14 @@
                 </td>                                                      
                 </tr>
                 @endforeach
-                
+
             <!-- More rows... -->
-        </tbody>
-        
-        </table>
+            </tbody>
+
+            </table>
+            <div class="px-6 py-4 text-red-500">
+            {{ $employees->links() }}
+            </div>
          </div>
         </div>
     </div>

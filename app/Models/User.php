@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function completedOrders()
+    {
+        return $this->hasMany('App\Models\Order')->where('received','=', 1);;
+    }
+
     public function isBoss()
     {
         return $this->attributes['role'] == 'boss';

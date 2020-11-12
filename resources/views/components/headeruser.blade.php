@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>deliveryApp</title>         
     
-    
  
     <!-- Tailwind -->
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
@@ -15,14 +14,16 @@
     <!-- Top Bar Nav -->
     <nav class="w-full py-4 bg-blue-800 shadow">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
-
-            <nav>
+        
+            <div class="flex items-center text-lg no-underline text-white pr-6 " title="Users currently">
+                <svg class="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /> <circle cx="8.5" cy="7" r="4" />   <polyline points="17 11 19 13 23 9" /> </svg>
+               <p class=" m-3"> {{ $users  }} </p>   
+            </div>
             
-            </nav>
                 @if (Route::has('login'))
                 <div class="flex items-center text-lg no-underline text-white pr-6">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="hover:text-gray-200 hover:underline px-4">Dashboard</a>
+                        <a href="{{ url('/orders') }}" class="hover:text-gray-200 hover:underline px-4">My account</a>
                         <a href="{{ url('/') }}" class="hover:text-gray-200 hover:underline px-4">Inicio</a>
                     @else
                         <a href="{{ route('login') }}" class="hover:text-gray-200 hover:underline px-4">Login</a>

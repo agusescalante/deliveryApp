@@ -94,7 +94,7 @@ class OrderTest extends TestCase
         $user1 = User::factory()->create(['role'=>'user']);
         $user2 = User::factory()->create(['role'=>'user']);
 
-        $order1 = Order::factory()->create(['user_id'=>$user1->id]);
+        $order1 = Order::factory()->create(['description'=>'Mayonesa Natura','user_id'=>$user1->id]);
         $order2 = Order::factory()->create(['user_id'=>$user2->id]);
 
         $response = $this->actingAs($user1)->get('orders');
