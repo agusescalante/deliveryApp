@@ -32,6 +32,9 @@ class OrderApiTest extends TestCase
         $response->assertJsonFragment([
             "user_id" => $user->id
         ]);
+        $response->assertJsonFragment([
+            "description" => $order->description
+        ]);
     }
     
 
@@ -53,6 +56,9 @@ class OrderApiTest extends TestCase
         $response = $this->getJson('/api/orders');
         $response->assertStatus(200);
         $response->assertJsonCount(1);
+        $response->assertJsonMissing([
+            "description" => $order->description
+        ]);
     }
 }
 
