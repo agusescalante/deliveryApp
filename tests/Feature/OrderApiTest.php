@@ -21,7 +21,7 @@ class OrderApiTest extends TestCase
        $user= User::factory()->create();
        $order = Order::factory()->create(['user_id'=>$user->id]);
   
-        Sanctum::actingAs(
+        $sanctum= Sanctum::actingAs(
             $user,
             ['view-order']
         );
@@ -48,7 +48,7 @@ class OrderApiTest extends TestCase
         );
 
         $apiUser = User::factory()->create();
-        Sanctum::actingAs(
+        $sanctum= Sanctum::actingAs(
             $apiUser,
             ['view-order']
         );
