@@ -23,10 +23,11 @@ class OrderApiTest extends TestCase
        $user= User::factory()->create();
        $order = Order::factory()->create(['user_id'=>$user->id]);
       function get_user($user){
-        return Sanctum::actingAs(
+        $sanctum = Sanctum::actingAs(
             $user,
             ['view-order']
         );
+        return  $sanctum ;
     }
     $response= get_user($user);
         $response =$this->getJson('/api/orders');
