@@ -24,15 +24,14 @@ class OrderController extends Controller
         $employees = Employee::all();
         $orders = Order::all();
 
-        $userActual = User::find(Auth::user()->id); 
+        $userCurrent = User::find(Auth::user()->id); 
 
         $pending = DB::table('orders')->where([['received', '=', '0'],
-        ['user_id', '=', $userActual->id],
+        ['user_id', '=', $userCurrent->id],
         ])->get()->count();
-        // $pending = User::find(Auth::user()->id)->orders->with('pending',false)->get();
-        // $pending1=count( $pending->completedSteps()->get() );
+        
         return view('orders.index',[
-        'orders'=> $orders,'employees'=>$employees,'pending'=>$pending,'userActual'=>$userActual
+        'orders'=> $orders,'employees'=>$employees,'pending'=>$pending
         ]);
         
     }

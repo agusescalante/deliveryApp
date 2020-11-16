@@ -8,7 +8,6 @@
             <div class="">
             
                 </div>
-                @endif
           </div>
 
         </div>
@@ -20,10 +19,12 @@
                     <button class=" leading-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> Create order </button>                                                       
                 </a>
 
-                <span class="px-8 .w-1/2 text-m .pl-24 leading-5 font-semibold rounded-full  bg-orange-200 text-red-800">
+                <span class="px-8 .w-1/2 text-m .pl-24 .space-y-64 leading-5 font-semibold rounded-full  bg-orange-200 text-red-800">
                 @if($pending > 0)
                 Total pending  {{ $pending }}  
                 <span>
+                @endif
+
                 
         <thead>
             <tr class="bg-gray-50">           
