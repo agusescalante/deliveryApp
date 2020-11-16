@@ -8,9 +8,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Order;
+
 class OrderApiTest extends TestCase
 {
-   
     /**
      * A basic feature test example.
      *
@@ -22,15 +22,7 @@ class OrderApiTest extends TestCase
     {
        $user= User::factory()->create();
        $order = Order::factory()->create(['user_id'=>$user->id]);
-      function get_user($user){
-        $sanctum = Sanctum::actingAs(
-            $user,
-            ['view-order']
-        );
-        return  $sanctum ;
-    }
-    $response= get_user($user);
-        $response =$this->getJson('/api/orders');
+        $response = $this->actingAs($user)->getJson('/api/orders');
         $response->assertStatus(200);
         $response->assertJsonCount(1);
         $response->assertJsonFragment([
@@ -54,15 +46,7 @@ class OrderApiTest extends TestCase
 
         $apiUser = User::factory()->create();
 
-       function get_users($apiUser){
-        return Sanctum::actingAs(
-            $apiUser,
-            ['view-order']
-        );
-    }
-    $response= get_users($apiUser);
-
-        $response = $this->getJson('/api/orders');
+        $response = $this->actingAs( $apiUser)->getJson('/api/orders');
         $response->assertStatus(200);
         $response->assertJsonCount(1);
         $response->assertJsonMissing([
