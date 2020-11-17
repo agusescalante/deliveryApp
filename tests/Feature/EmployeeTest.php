@@ -44,14 +44,31 @@ class EmployeeTest extends TestCase
         
     }
 
-    public function testBossRoleCanAddEmployee()
+    public function testBossDestroyEmployee()
     {
         $user = User::factory()->create(['role' => 'boss']);
+        $employee = Employee::factory()->create();
+        $response = $this->actingAs($user)->delete('employees/'.$employee->id);
         $response = $this->actingAs($user)
-            ->get(route('employees.create'));
-        $response->assertStatus(200);
+                ->get('employees/'.$employee->id);
+                $response->assertStatus(404);
+        $employeeDelete = Employee::where('id','=',$employee->id);
+        $this->assertEquals($employeeDelete->count(), 0);
     }
     
-    
+    public function testBossRoleCanEditEmployee()
+    {
+        $employee = Employee::factory()->create();
+        $user = User::factory()->create(['role' => 'boss']);
+        $response = $this->actingAs($user)->post('employees/'.$employee->id,
+            [
+                'name' => 'Name',
+                'surname' => 'Surname',
+                'email' => 'email@email.com',
+                'born_date' => '2-12-1998'
+            ]);
+        $employee = Employee::first();
+        $this->assertNotEquals($employee->name, 'Name');
+    }
 
 }

@@ -21,7 +21,7 @@ class EmployeeTest extends TestCase
     {
         $this->assertTrue( 
           Schema::hasColumns('employees', [
-            'id', 'name', 'surname', 'created_at', 'email', 'born_date'
+            'id', 'name', 'surname', 'created_at', 'email', 'born_date' ,'file_path'
         ]));
     }
 
