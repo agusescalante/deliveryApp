@@ -1,0 +1,12 @@
+GET http://localhost:8080/api/user
+Accept: application/json
+Authorization: Bearer ZL5P1W84iLeBpgg62UJZ8fdlT6Lj1FGh9if7K75Z
+
+
+###
+
+GET http://localhost:8080/api/orders
+Accept: application/json
+Authorization: Bearer ZL5P1W84iLeBpgg62UJZ8fdlT6Lj1FGh9if7K75Z
+
+###
