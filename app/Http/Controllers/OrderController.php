@@ -18,7 +18,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $employees = Employee::all();
@@ -26,12 +26,18 @@ class OrderController extends Controller
 
         $userCurrent = User::find(Auth::user()->id); 
 
+        $userRole= $request->user()->role;
+
         $pending = DB::table('orders')->where([['received', '=', '0'],
         ['user_id', '=', $userCurrent->id],
         ])->get()->count();
-        
+
+        $pendingTotal = DB::table('orders')->where([['received', '=', '0']])->get()->count();
+
+         $pendingTotal;
         return view('orders.index',[
-        'orders'=> $orders,'employees'=>$employees,'pending'=>$pending
+                'orders'=> $orders,'employees'=>$employees,
+                'pending'=>$pending , 'userRole'=>$userRole , 'pendingTotal'=>$pendingTotal
         ]);
         
     }

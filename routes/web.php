@@ -39,6 +39,7 @@ Route::get('/', function () {
         $users = DB::table('users')->count();
         
         $employees = Employee::all();
+       
 
         $orders = Order::all();
         return view('welcome',[
