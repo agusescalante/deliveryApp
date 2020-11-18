@@ -14,9 +14,9 @@
             <div class="shadow overflow-hidden border-b bg-gray-50 border-gray-50 sm:rounded-lg">
 
                 <table class="min-w-full divide-y divide-gray-400">
-                
+
                 <a href="{{ route('orders.create') }}">
-                    <button class=" leading-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> Create order </button>                                                       
+                    <button class=" leading-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> Create order </button>
                 </a>
 
                 @if($userRole == 'boss' && $pendingTotal > 0)
@@ -57,6 +57,29 @@
             </thead>
 
                 
+
+        <thead>
+            <tr class="bg-gray-50">
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Description
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Price
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Received
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Employee
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    User
+                </th>
+                <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                </th>
+            </tr>
+        </thead>
         </div>
 
         <tbody class="bg-white divide-y divide-gray-200">
@@ -68,6 +91,8 @@
                             {{ $order->description }}
                             </div>   
                     </td>
+
+             
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900"> $ {{  $order->price }}
                     </div>
@@ -91,24 +116,26 @@
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900">  
                         <img title="{{ $order->user->name }} {{ $order->user->last_name }} " class="h-8 w-8 rounded-full object-cover" src="{{ $order->user->getProfilePhotoUrlAttribute() }}"  />
+
+                  
                     </div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap">
-                        <div class="text-sm leading-5 text-gray-900">  
+                        <div class="text-sm leading-5 text-gray-900">
                             @can('update',$order)
                                 <a href="{{ route('orders.edit',$order) }}" title="Edit" class="text-indigo-600 hover:text-indigo-900"><svg class="h-8 w-8 text-green-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>   <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />  <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /> </svg>
                                 </a>
                             @endcan
 
                             <!-- @cannot('update',$order)
-                            
+
                              <svg class="h-8 w-8 text-red-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="7" r="4" />  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />  <line x1="19" y1="7" x2="19" y2="10" />  <line x1="19" y1="14" x2="19" y2="14.01" /></svg>
                              <p>Unauthorized</p>
                             @endcannot -->
                         </div>
                 </td>
-    
+
                 <td class="px-6 py-4 whitespace-no-wrap">
                     <div class="text-sm leading-5 text-gray-900"> 
                         @can('delete',$order) 
@@ -117,6 +144,7 @@
                             {{ method_field('DELETE') }}  
                                 <button class="leading-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" title="Delete"> 
                                 Delete order </button> 
+
                             @endcan
                            
                         </form>
