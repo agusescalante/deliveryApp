@@ -19,13 +19,12 @@ class EmployeeController extends Controller
         $employees = Employee::paginate(10);
         // $employee = Employee::with(['role'=>'boss']);
         $orders = Order::all();
-
         $search = $request->surname;
 
         if((isset($search)) && !(is_numeric($search))){
             $employees = Employee::where('surname','LIKE','%'. $search .'%')
             ->paginate(15);
-                                                        
+
         }
         return view('employees.index',['employees'=> $employees,'orders'=>$orders]);
 
@@ -44,7 +43,7 @@ class EmployeeController extends Controller
 
         return view('employees.create',[
             ]);
-        
+
     }
 
     /**
@@ -55,16 +54,20 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'name'=>'required',
-            'email'=>'required'  
+            'email'=>'required',
             // 'bord_date'=>'required'
-
         ]);
 
         $input = $request->all();
 
+        if($request->file_path != null ){
+        $file= $request->file('file_path')->store('files',['disk'=>'public']);
+        $input['file_path'] = $file;
+            }
+            
         Employee::create($input);
         return redirect('employees');
     }
@@ -91,7 +94,7 @@ class EmployeeController extends Controller
         $this->authorize('update',$employee);
 
         return view('employees.edit',[
-            
+
                 'employee'=> $employee
             ]);
     }

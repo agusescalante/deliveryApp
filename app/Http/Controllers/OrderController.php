@@ -6,6 +6,10 @@ use App\Models\Employee;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class OrderController extends Controller
 {
@@ -14,13 +18,26 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $employees = Employee::all();
         $orders = Order::all();
+
+        $userCurrent = User::find(Auth::user()->id); 
+
+        $userRole= $request->user()->role;
+
+        $pending = DB::table('orders')->where([['received', '=', '0'],
+        ['user_id', '=', $userCurrent->id],
+        ])->get()->count();
+
+        $pendingTotal = DB::table('orders')->where([['received', '=', '0']])->get()->count();
+
+         $pendingTotal;
         return view('orders.index',[
-        'orders'=> $orders,'employees'=>$employees
+                'orders'=> $orders,'employees'=>$employees,
+                'pending'=>$pending , 'userRole'=>$userRole , 'pendingTotal'=>$pendingTotal
         ]);
         
     }

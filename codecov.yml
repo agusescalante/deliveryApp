@@ -1,4 +1,4 @@
 ignore:
   - "app/Actions"  
-  - "app/Https/Middleware"  
+  - "app/Http/Middleware"  
   

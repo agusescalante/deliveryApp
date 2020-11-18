@@ -1,7 +1,7 @@
 <x-orders>
 <!-- component -->
 <div class="leading-loose">
-        <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl" method="POST" action="{{ route('employees.store') }}">
+        <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl" method="POST" action="{{ route('employees.store') }}" enctype="multipart/form-data">
             @csrf
             <p class="text-gray-800 font-medium">Add new employee</p>
 
@@ -17,7 +17,7 @@
 
             <div class="">
                 <label class="block text-sm text-gray-00" for="surname">Surname</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="surname" name="surname" type="text" required="" placeholder="surname" aria-label="name" value="{{ old('surname') }}">
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="surname" name="surname" type="text" required="" placeholder="Surname" aria-label="name" value="{{ old('surname') }}">
                         @error('surname')
                         <div class="text-red-600">
                             {{ $message }}
@@ -26,13 +26,23 @@
             </div>
 
             <div class="">
-                <label class="block text-sm text-gray-00" for="surname">Email</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="text" required="" placeholder="email" aria-label="email" value="{{ old('email') }}">
-                        @error('description')
+                <label class="block text-sm text-gray-00" for="email">Email</label>
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="text" required="" placeholder="Email" aria-label="email" value="{{ old('email') }}">
+                        @error('email')
                         <div class="text-red-600">
                             {{ $message }}
                         </div>
                         @enderror
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+                <label class="block font-medium text-sm text-gray-700" for="file_path">
+                    Archivo asociado
+                </label>
+                <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="file_path" name="file_path" type="file" value="{{ old('file_path') }}" multiple>
+                @error('fileToUpload')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="">
@@ -44,8 +54,8 @@
                         </div>
                         @enderror
             </div>
-                    
-            
+
+
             <div class="mt-4">
             <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Add</button>
             </div>
