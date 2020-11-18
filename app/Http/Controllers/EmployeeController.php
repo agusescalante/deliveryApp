@@ -57,15 +57,17 @@ class EmployeeController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'email'=>'required'
+            'email'=>'required',
             // 'bord_date'=>'required'
-
         ]);
 
         $input = $request->all();
 
-       $file= $request->file('file_path')->store('files',['disk'=>'public']);
-       $input['file_path'] = $file;
+        if($request->file_path != null ){
+        $file= $request->file('file_path')->store('files',['disk'=>'public']);
+        $input['file_path'] = $file;
+            }
+            
         Employee::create($input);
         return redirect('employees');
     }

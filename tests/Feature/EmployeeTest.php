@@ -60,13 +60,14 @@ class EmployeeTest extends TestCase
     {
         $employee = Employee::factory()->create();
         $user = User::factory()->create(['role' => 'boss']);
-        $response = $this->actingAs($user)->post('employees/'.$employee->id,
+        $response = $this->actingAs($user)->put('employees/'.$employee->id,
             [
                 'name' => 'Name',
                 'surname' => 'Surname',
                 'email' => 'email@email.com',
                 'born_date' => '2-12-1998'
             ]);
+        $response->assertRedirect('employees');
         $employee = Employee::first();
         $this->assertNotEquals($employee->name, 'Name');
     }

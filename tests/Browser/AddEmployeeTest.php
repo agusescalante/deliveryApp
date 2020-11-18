@@ -33,8 +33,8 @@ class AddEmployeeTest extends DuskTestCase
             ->type('email', 'empleado1@gmail.com')
             ->type('born_date', '26-06-2011')
             ->press('Add')
-            ->assertSee('empleado1')
-            ->assertPathIs('/employees');
+            // ->assertSee('empleado1')
+             ->assertPathIs('/employees');
       });
     }
 }
