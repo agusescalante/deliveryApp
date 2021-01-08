@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0.1-fpm
 RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev \
     libzip-dev \
     zip \
