@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: nginx
+    versions:
+    - 1.19.6
+    - 1.19.7
+    - 1.19.8
+    - 1.19.9
+  - dependency-name: php
+    versions:
+    - 8.0.1.pre.fpm
+    - 8.0.2.pre.fpm
