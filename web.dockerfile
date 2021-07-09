@@ -1,3 +1,3 @@
-FROM nginx:1.19.5
+FROM nginx:1.21.1
 
 COPY vhost.conf /etc/nginx/conf.d/default.conf
