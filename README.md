@@ -8,7 +8,6 @@
 App prog. Web ll
 
 
-[Deploy in heroku](https://deliveryapp-project.herokuapp.com/)
 
 ## Steps to run the project locally
 
